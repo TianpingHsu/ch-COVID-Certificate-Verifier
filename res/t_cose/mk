@@ -1,0 +1,3 @@
+make -f Makefile.ossl -j8
+#cp libt_cose.so ~/sandbox/ch-COVID-Certificate-Verifier/third_party
+cp libt_cose.so ~/ch-COVID-Certificate-Verifier-master/third_party

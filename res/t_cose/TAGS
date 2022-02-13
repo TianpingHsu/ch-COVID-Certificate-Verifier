@@ -1,0 +1,495 @@
+
+crypto_adapters/t_cose_openssl_crypto.c,373
+convert_ecdsa_signature_from_ossl(66,2028
+convert_ecdsa_signature_to_ossl(130,4317
+ecdsa_key_checks(206,6844
+enum t_cose_err_t t_cose_crypto_sig_size(273,8910
+t_cose_crypto_pub_key_sign(303,9715
+t_cose_crypto_pub_key_verify(381,12463
+enum t_cose_err_t t_cose_crypto_hash_start(455,14887
+void t_cose_crypto_hash_update(493,15836
+t_cose_crypto_hash_finish(531,17177
+
+crypto_adapters/t_cose_psa_crypto.c,550
+#define T_COSE_USE_PSA_CRYPTO_FROM_MBED_CRYPTO1156,1911
+#define ARG_UNUSED(61,2021
+static psa_algorithm_t cose_alg_id_to_psa_alg_id(71,2265
+static enum t_cose_err_t psa_status_to_t_cose_error_signing(95,3056
+t_cose_crypto_pub_key_verify(111,3743
+t_cose_crypto_pub_key_sign(173,6177
+enum t_cose_err_t t_cose_crypto_sig_size(239,8872
+cose_hash_alg_id_to_psa(322,11754
+psa_status_to_t_cose_error_hash(343,12342
+enum t_cose_err_t t_cose_crypto_hash_start(359,12967
+void t_cose_crypto_hash_update(381,13592
+t_cose_crypto_hash_finish(408,14390
+
+crypto_adapters/t_cose_test_crypto.c,303
+int hash_test_mode 46,1335
+enum t_cose_err_t t_cose_crypto_sig_size(53,1415
+t_cose_crypto_pub_key_sign(70,1823
+t_cose_crypto_pub_key_verify(89,2391
+int check_for_key_pair_leaks(107,2950
+t_cose_crypto_hash_start(122,3260
+void t_cose_crypto_hash_update(142,3718
+t_cose_crypto_hash_finish(156,4092
+
+crypto_adapters/b_con_hash/sha256.c,323
+#define ROTLEFT(24,1104
+#define ROTRIGHT(25,1160
+#define CH(27,1218
+#define MAJ(28,1265
+#define EP0(29,1326
+#define EP1(30,1391
+#define SIG0(31,1456
+#define SIG1(32,1518
+static const WORD k[k35,1654
+void sha256_transform(47,2476
+void sha256_init(88,3331
+void sha256_update(102,3639
+void sha256_final(117,3921
+
+crypto_adapters/b_con_hash/sha256.h,256
+#define SHA256_H10,387
+#define SHA256_BLOCK_SIZE 16,568
+typedef unsigned char BYTE;19,715
+typedef unsigned int  WORD;20,769
+	BYTE data[data23,880
+	WORD datalen;24,896
+	unsigned long long bitlen;25,911
+	WORD state[state26,939
+} SHA256_CTX;27,955
+
+crypto_adapters/psa_off_target_crypto/t_cose_psa_off_target_signature.c,626
+struct degenerate_key_pair 25,472
+    void *key_pair;key_pair26,501
+static struct degenerate_key_pair key_store[key_store29,525
+static EC_KEY *key_lookup(key_lookup42,864
+psa_status_t psa_allocate_key(58,1199
+psa_status_t psa_destroy_key(68,1363
+psa_status_t psa_set_key_policy(80,1614
+void psa_key_policy_set_usage(94,1930
+psa_status_t psa_import_key(107,2211
+convert_ecdsa_signature_from_ossl(226,6244
+convert_ecdsa_signature_to_ossl(291,8497
+ecdsa_key_checks(367,10978
+psa_status_t  psa_get_key_information(413,12341
+psa_status_t psa_asymmetric_sign(457,13517
+psa_status_t psa_asymmetric_verify(520,15747
+
+crypto_adapters/psa_off_target_crypto/t_cose_psa_off_target_hashes.c,461
+static SHA256_CTX g_s256_ctx;20,432
+static SHA512_CTX g_s512_ctx;21,462
+typedef enum {IDLE,IDLE25,540
+typedef enum {IDLE, S256,25,540
+typedef enum {IDLE, S256, S384,25,540
+typedef enum {IDLE, S256, S384, S512}S51225,540
+typedef enum {IDLE, S256, S384, S512} off_target_hash_status_t;25,540
+static off_target_hash_status_t s_status 26,604
+psa_status_t psa_hash_setup(32,735
+psa_status_t psa_hash_update(84,1953
+psa_status_t psa_hash_finish(120,2925
+
+examples/t_cose_basic_example_ossl.c,460
+#define PUBLIC_KEY_prime256v1 41,962
+#define PRIVATE_KEY_prime256v1 48,1148
+#define PUBLIC_KEY_secp384r1 54,1260
+#define PRIVATE_KEY_secp384r1 63,1519
+#define PUBLIC_KEY_secp521r1 70,1667
+#define PRIVATE_KEY_secp521r1 81,2008
+enum t_cose_err_t make_ossl_ecdsa_key_pair(98,2527
+void free_ossl_ecdsa_key_pair(218,6269
+static void print_useful_buf(232,6603
+int32_t one_step_sign_example(263,7314
+int two_step_sign_example(448,14381
+int main(641,21386
+
+examples/t_cose_basic_example_psa.c,445
+#define T_COSE_USE_PSA_CRYPTO_FROM_MBED_CRYPTO1152,1487
+#define PRIVATE_KEY_prime256v1 59,1601
+#define PRIVATE_KEY_secp384r1 64,1830
+#define PRIVATE_KEY_secp521r1 70,2156
+enum t_cose_err_t make_psa_ecdsa_key_pair(88,2928
+#define PSA_KEY_TYPE_ECC_KEY_PAIR 108,3721
+void free_psa_ecdsa_key_pair(229,8078
+static void print_useful_buf(243,8434
+int32_t one_step_sign_example(273,9144
+int two_step_sign_example(458,16209
+int main(652,23278
+
+main.c,51
+static void fputs_wrapper(22,373
+int main(31,549
+
+inc/t_cose/q_useful_buf.h,1223
+#define __Q_USEFUL_BUF_H__13,183
+#define NULL_Q_USEFUL_BUF_C 30,441
+#define NULL_Q_USEFUL_BUF 32,486
+static inline int q_useful_buf_c_is_null(35,531
+static inline int q_useful_buf_is_null(41,638
+static inline int q_useful_buf_c_is_empty(47,740
+static inline int q_useful_buf_is_empty(52,848
+static inline int q_useful_buf_is_null_or_empty(58,952
+static inline int q_useful_buf_c_is_null_or_empty(64,1070
+static inline struct q_useful_buf q_useful_buf_unconst(70,1193
+#define Q_USEFUL_BUF_FROM_SZ_LITERAL 75,1313
+#define Q_USEFUL_BUF_FROM_BYTE_ARRAY_LITERAL 77,1377
+#define Q_USEFUL_BUF_MAKE_STACK_UB 79,1458
+#define Q_USEFUL_BUF_FROM_BYTE_ARRAY 81,1518
+static inline struct q_useful_buf_c q_useful_buf_from_sz(84,1583
+useful_buf_copy_offset(90,1738
+static inline struct q_useful_buf_c q_useful_buf_copy(99,1934
+static inline struct q_useful_buf_c q_useful_buf_set(106,2138
+static inline struct q_useful_buf_c q_useful_buf_copy_ptr(113,2330
+static inline struct q_useful_buf_c q_useful_buf_head(121,2605
+static inline struct q_useful_buf_c q_useful_buf_tail(127,2800
+static inline int q_useful_buf_compare(133,2995
+static inline size_t q_useful_buf_is_value(139,3188
+q_useful_buf_find_bytes(146,3392
+
+inc/t_cose/t_cose_sign1_verify.h,1079
+#define __T_COSE_SIGN1_VERIFY_H__13,203
+struct t_cose_parameters 71,2153
+    int32_t               cose_algorithm_id;78,2500
+    struct q_useful_buf_c kid;82,2632
+    struct q_useful_buf_c iv;86,2760
+    struct q_useful_buf_c partial_iv;90,2895
+    struct q_useful_buf_c content_type_tstr;95,3090
+    uint32_t              content_type_uint;100,3324
+#define T_COSE_UNSET_ALGORITHM_ID 109,3524
+#define T_COSE_OPT_ALLOW_SHORT_CIRCUIT 121,3795
+#define T_COSE_OPT_REQUIRE_KID 131,4157
+#define T_COSE_OPT_TAG_REQUIRED 148,4805
+#define T_COSE_OPT_TAG_PROHIBITED 160,5260
+#define T_COSE_OPT_DECODE_ONLY 177,5905
+#define T_COSE_MAX_TAGS_TO_RETURN 186,6172
+struct t_cose_sign1_verify_ctx 193,6336
+    struct t_cose_key     verification_key;195,6402
+    uint32_t              option_flags;196,6446
+    uint64_t              auTags[auTags197,6486
+t_cose_sign1_verify_init(419,16097
+t_cose_sign1_set_verification_key(428,16335
+t_cose_sign1_get_nth_tag(436,16563
+t_cose_sign1_verify(474,18172
+t_cose_sign1_verify_aad(489,18751
+t_cose_sign1_verify_detached(505,19407
+
+inc/t_cose/t_cose_sign1_sign.h,905
+#define __T_COSE_SIGN1_H__13,255
+struct t_cose_sign1_sign_ctx 69,2314
+    struct q_useful_buf_c protected_parameters;71,2378
+    int32_t               cose_algorithm_id;72,2459
+    struct t_cose_key     signing_key;73,2504
+    uint32_t              option_flags;74,2543
+    struct q_useful_buf_c kid;75,2583
+    uint32_t              content_type_uint;77,2650
+    const char *          content_type_tstr;78,2695
+#define T_COSE_OPT_SHORT_CIRCUIT_SIG 105,3822
+#define T_COSE_OPT_OMIT_CBOR_TAG 118,4332
+t_cose_sign1_sign_init(423,17354
+t_cose_sign1_set_signing_key(439,17857
+t_cose_sign1_encode_parameters(470,19063
+t_cose_sign1_sign_aad(536,22127
+t_cose_sign1_sign(552,22755
+t_cose_sign1_sign_detached(567,23326
+t_cose_sign1_encode_signature_aad(583,23996
+t_cose_sign1_encode_signature(595,24516
+t_cose_sign1_set_content_type_uint(607,24998
+t_cose_sign1_set_content_type_tstr(615,25212
+
+inc/t_cose/t_cose_common.h,2235
+#define __T_COSE_COMMON_H__13,190
+#define T_COSE_ALGORITHM_ES256 63,1642
+#define T_COSE_ALGORITHM_ES384 76,1992
+#define T_COSE_ALGORITHM_ES512 89,2343
+enum t_cose_crypto_lib_t 99,2558
+    T_COSE_CRYPTO_LIB_UNIDENTIFIED 103,2692
+    T_COSE_CRYPTO_LIB_OPENSSL 106,2855
+    T_COSE_CRYPTO_LIB_PSA 109,2989
+struct t_cose_key 123,3448
+    enum t_cose_crypto_lib_t crypto_lib;127,3657
+        void *key_ptr;key_ptr131,3820
+        uint64_t key_handle;133,3910
+    } k;134,3939
+#define T_COSE_NULL_KEY 138,3993
+#define T_COSE_SIGN1_MAX_SIZE_PROTECTED_PARAMETERS 155,4765
+enum t_cose_err_t 168,5127
+    T_COSE_SUCCESS 170,5192
+    T_COSE_ERR_UNSUPPORTED_SIGNING_ALG 173,5279
+    T_COSE_ERR_MAKING_PROTECTED 178,5526
+    T_COSE_ERR_UNSUPPORTED_HASH 182,5700
+    T_COSE_ERR_HASH_GENERAL_FAIL 185,5802
+    T_COSE_ERR_HASH_BUFFER_SIZE 188,5902
+    T_COSE_ERR_SIG_BUFFER_SIZE 192,6024
+    T_COSE_ERR_SIGN1_FORMAT 198,6330
+    T_COSE_ERR_CBOR_NOT_WELL_FORMED 203,6569
+    T_COSE_ERR_PARAMETER_CBOR 209,6864
+    T_COSE_ERR_NO_ALG_ID 213,7010
+    T_COSE_ERR_NO_KID 217,7151
+    T_COSE_ERR_SIG_VERIFY 222,7330
+    T_COSE_ERR_BAD_SHORT_CIRCUIT_KID 225,7424
+    T_COSE_ERR_INVALID_ARGUMENT 228,7522
+    T_COSE_ERR_INSUFFICIENT_MEMORY 232,7664
+    T_COSE_ERR_FAIL 235,7745
+    T_COSE_ERR_TAMPERING_DETECTED 238,7830
+    T_COSE_ERR_UNKNOWN_KEY 242,7956
+    T_COSE_ERR_WRONG_TYPE_OF_KEY 246,8073
+    T_COSE_ERR_SIG_STRUCT 250,8201
+    T_COSE_ERR_SHORT_CIRCUIT_SIG 255,8399
+    T_COSE_ERR_SIG_FAIL 259,8538
+    T_COSE_ERR_CBOR_FORMATTING 265,8809
+    T_COSE_ERR_TOO_SMALL 268,8916
+    T_COSE_ERR_TOO_MANY_PARAMETERS 274,9175
+    T_COSE_ERR_UNKNOWN_CRITICAL_PARAMETER 278,9327
+    T_COSE_ERR_SHORT_CIRCUIT_SIG_DISABLED 283,9573
+    T_COSE_ERR_INCORRECT_KEY_FOR_LIB 288,9754
+    T_COSE_ERR_NON_INTEGER_ALG_ID 292,9912
+    T_COSE_ERR_BAD_CONTENT_TYPE 296,10127
+    T_COSE_ERR_INCORRECTLY_TAGGED 301,10314
+    T_COSE_ERR_EMPTY_KEY 304,10414
+    T_COSE_ERR_DUPLICATE_PARAMETER 310,10613
+    T_COSE_ERR_PARAMETER_NOT_PROTECTED 315,10824
+    T_COSE_ERR_CRIT_PARAMETER 318,10925
+    T_COSE_ERR_TOO_MANY_TAGS 322,11066
+#define T_COSE_PARAMETER_LIST_MAX 342,11651
+#define T_COSE_EMPTY_UINT_CONTENT_TYPE 350,11808
+
+test/t_cose_make_test_messages.c,319
+short_circuit_sign(52,1757
+encode_protected_parameters(123,4491
+add_unprotected_parameters(270,10154
+static uint8_t s_protected_params[s_protected_params396,15396
+t_cose_sign1_test_message_encode_parameters(403,15604
+t_cose_sign1_test_message_output_signature(474,18274
+t_cose_test_message_sign1_sign(576,22465
+
+test/t_cose_make_test_messages.h,1240
+#define __T_COSE_MAKE_TEST_MESSAGES__12,232
+#define T_COSE_TEST_PARAMETER_LABEL 42,794
+#define T_COSE_TEST_BAD_CRIT_PARAMETER 45,895
+#define T_COSE_TEST_EXTRA_PARAMETER 49,1050
+#define T_COSE_TEST_NO_PROTECTED_PARAMETERS 53,1188
+#define T_COSE_TEST_NO_UNPROTECTED_PARAMETERS 57,1336
+#define T_COSE_TEST_NOT_WELL_FORMED_1 61,1479
+#define T_COSE_TEST_NOT_WELL_FORMED_2 65,1623
+#define T_COSE_TEST_UNKNOWN_CRIT_UINT_PARAMETER 69,1803
+#define T_COSE_TEST_CRIT_PARAMETER_EXIST 73,1939
+#define T_COSE_TEST_TOO_MANY_CRIT_PARAMETER_EXIST 77,2118
+#define T_COSE_TEST_BAD_CRIT_LABEL 80,2248
+#define T_COSE_TEST_CRIT_NOT_PROTECTED 83,2350
+#define T_COSE_TEST_TOO_MANY_UNKNOWN 86,2472
+#define T_COSE_TEST_UNKNOWN_CRIT_TSTR_PARAMETER 90,2654
+#define T_COSE_TEST_ALL_PARAMETERS 94,2813
+#define T_COSE_TEST_BAD_PROTECTED 97,2915
+#define T_COSE_TEST_UNPROTECTED_NOT_MAP 100,3021
+#define T_COSE_TEST_KID_IN_PROTECTED 104,3203
+#define T_COSE_TEST_TOO_LARGE_CONTENT_TYPE 108,3346
+#define T_COSE_TEST_UNCLOSED_PROTECTED 112,3499
+#define T_COSE_TEST_DUP_CONTENT_ID 116,3634
+#define T_COSE_TEST_EMPTY_PROTECTED_PARAMETERS 119,3741
+#define T_COSE_TEST_EMPTY_CRIT_PARAMETER 123,3886
+#define T_COSE_TEST_TOO_MANY_TSTR_CRIT_LABLELS 127,4065
+
+test/run_tests.c,657
+typedef int_fast32_t (test_fun_t)26,572
+typedef const char 27,613
+#define TEST_ENTRY(30,657
+#define TEST_ENTRY_DISABLED(31,718
+    const char  *szTestName;szTestName34,807
+    test_fun_t  *test_fun;test_fun35,836
+    bool         bEnabled;36,863
+} test_entry;37,890
+    const char *szTestName;szTestName41,952
+    test_fun2_t  *test_fun;test_fun42,980
+    bool         bEnabled;43,1008
+} test_entry2;44,1035
+static test_entry2 s_tests2[s_tests247,1052
+static test_entry s_tests[s_tests51,1097
+static const char *NumToString(NumToString113,3359
+int RunTestsTCose(149,4196
+static void PrintSize(271,8018
+void PrintSizesTCose(295,8638
+
+test/t_cose_test.h,29
+#define t_cose_test_h12,182
+
+test/t_cose_make_openssl_test_key.c,351
+#define PUBLIC_KEY_prime256v1 21,419
+#define PRIVATE_KEY_prime256v1 28,625
+#define PUBLIC_KEY_secp384r1 34,749
+#define PRIVATE_KEY_secp384r1 43,1036
+#define PUBLIC_KEY_secp521r1 50,1200
+#define PRIVATE_KEY_secp521r1 61,1577
+enum t_cose_err_t make_ecdsa_key_pair(76,2038
+void free_ecdsa_key_pair(194,5715
+int check_for_key_pair_leaks(203,5869
+
+test/t_cose_sign_verify_test.c,273
+int_fast32_t sign_verify_basic_test_alg(22,448
+int_fast32_t sign_verify_basic_test(88,2507
+int_fast32_t sign_verify_sig_fail_test(119,3141
+int_fast32_t sign_verify_make_cwt_test(202,5632
+static int size_test(344,11048
+int_fast32_t sign_verify_get_size_test(441,14233
+
+test/run_tests.h,54
+typedef void (*OutputStringCB)OutputStringCB42,1202
+
+test/t_cose_test.c,1437
+#define SZ_CONTENT 22,584
+static const struct q_useful_buf_c s_input_payload 23,626
+int_fast32_t short_circuit_self_test(28,761
+int_fast32_t short_circuit_self_detached_content_test(150,5252
+int_fast32_t short_circuit_verify_fail_test(238,8540
+int_fast32_t short_circuit_signing_error_conditions_test(344,12396
+int_fast32_t short_circuit_make_cwt_test(422,14881
+int_fast32_t short_circuit_decode_only_test(548,19800
+static const uint8_t rfc8152_example_2_1[rfc8152_example_2_1653,23304
+int_fast32_t cose_example_test(672,24095
+static enum t_cose_err_t run_test_sign_and_verify(714,25486
+int_fast32_t all_header_parameters_test(765,27324
+struct test_case 836,29561
+    uint32_t           test_option;837,29580
+    enum t_cose_err_t  result;838,29616
+static struct test_case bad_parameters_tests_table[bad_parameters_tests_table841,29651
+int_fast32_t bad_parameters_test(882,30861
+static struct test_case crit_tests_table[crit_tests_table898,31184
+int_fast32_t crit_parameters_test(936,32583
+int_fast32_t content_type_test(954,32966
+struct sign1_sample 1046,35812
+    struct q_useful_buf_c CBOR;1047,35834
+    enum t_cose_err_t     expected_error;1048,35866
+static struct sign1_sample sign1_sample_inputs[sign1_sample_inputs1051,35912
+int_fast32_t sign1_structure_decode_test(1080,37402
+int_fast32_t short_circuit_hash_fail_test(1120,38661
+int_fast32_t tags_test(1182,40395
+int32_t get_size_test(1522,53149
+
+test/t_cose_sign_verify_test.h,41
+#define t_cose_sign_verify_test_h12,201
+
+test/t_cose_make_psa_test_key.c,342
+#define T_COSE_USE_PSA_CRYPTO_FROM_MBED_CRYPTO1132,917
+#define PRIVATE_KEY_prime256v1 39,1031
+#define PRIVATE_KEY_secp384r1 44,1260
+#define PRIVATE_KEY_secp521r1 50,1586
+enum t_cose_err_t make_ecdsa_key_pair(62,2083
+    #define PSA_KEY_TYPE_ECC_KEY_PAIR 82,2872
+void free_ecdsa_key_pair(202,7185
+int check_for_key_pair_leaks(211,7361
+
+src/t_cose_parameters.h,305
+#define t_cose_parameters_h13,194
+struct t_cose_label_list 42,1030
+    int64_t int_labels[int_labels44,1109
+    struct q_useful_buf_c tstr_labels[tstr_labels46,1209
+#define LABEL_LIST_TERMINATOR 59,1707
+inline static void clear_label_list(67,1833
+static inline void clear_cose_parameters(93,2561
+
+src/t_cose_parameters.c,551
+add_label_to_list(40,994
+is_label_list_clear(96,2930
+decode_critical_parameter(118,3790
+check_critical_labels(206,6699
+struct cb_context 255,8816
+    struct t_cose_label_list *unknown_labels;unknown_labels256,8836
+    enum t_cose_err_t         return_value;257,8882
+static QCBORError header_parameter_callback(274,9534
+parse_cose_header_parameters(341,12546
+#define ALG_INDEX 361,13531
+#define KID_INDEX 362,13562
+#define IV_INDEX 363,13593
+#define PARTIAL_IV_INDEX 364,13624
+#define CONTENT_TYPE 365,13655
+#define END_INDEX 366,13686
+
+src/t_cose_util.c,313
+int32_t hash_alg_id_from_sig_alg_id(31,559
+static void hash_bstr(66,1731
+enum t_cose_err_t create_tbs_hash(112,3455
+static const uint8_t defined_short_circuit_kid[defined_short_circuit_kid194,6703
+static struct q_useful_buf_c short_circuit_kid;200,6966
+struct q_useful_buf_c get_short_circuit_kid(205,7060
+
+src/t_cose_sign1_sign.c,281
+short_circuit_sig_size(49,1196
+short_circuit_sign(86,2798
+encode_protected_parameters(150,5126
+add_unprotected_parameters(189,6600
+t_cose_sign1_encode_parameters_internal(240,8282
+t_cose_sign1_encode_signature_aad_internal(308,10516
+t_cose_sign1_sign_aad_internal(428,15436
+
+src/t_cose_util.h,125
+#define __T_COSE_UTIL_H__13,187
+#define T_COSE_INVALID_ALGORITHM_ID 37,713
+#define T_COSE_SHORT_CIRCUIT_KID_SIZE 117,4082
+
+src/t_cose_crypto.h,1188
+#define __T_COSE_CRYPTO_H__13,185
+#define T_COSE_EC_P256_SIG_SIZE 103,3547
+#define T_COSE_EC_P384_SIG_SIZE 104,3608
+#define T_COSE_EC_P512_SIG_SIZE 105,3669
+    #define T_COSE_MAX_SIG_SIZE 123,4464
+        #define T_COSE_MAX_SIG_SIZE 126,4559
+        #define T_COSE_MAX_SIG_SIZE 128,4629
+struct t_cose_crypto_hash 325,12664
+        psa_hash_operation_t ctx;339,13293
+        psa_status_t         status;340,13327
+            SHA256_CTX sha_256;347,13560
+            SHA512_CTX sha_512;351,13774
+        } ctx;353,13821
+        int     update_error;355,13837
+        int32_t cose_hash_alg_id;356,13919
+        SHA256_CTX b_con_hash_context;360,14091
+            void    *ptr;ptr366,14209
+            uint64_t handle;367,14235
+        } context;368,14264
+        int64_t status;369,14283
+#define T_COSE_CRYPTO_SHA256_SIZE 382,14547
+#define T_COSE_CRYPTO_SHA384_SIZE 387,14640
+#define T_COSE_CRYPTO_SHA512_SIZE 392,14733
+    #define T_COSE_CRYPTO_MAX_HASH_SIZE 400,14922
+        #define T_COSE_CRYPTO_MAX_HASH_SIZE 403,15027
+        #define T_COSE_CRYPTO_MAX_HASH_SIZE 405,15107
+t_cose_check_list(546,20227
+static inline bool t_cose_algorithm_is_ecdsa(558,20434
+
+src/t_cose_sign1_verify.c,150
+t_cose_crypto_short_circuit_verify(48,1062
+process_tags(96,2617
+qcbor_decode_error_to_t_cose_error(176,5152
+t_cose_sign1_verify_internal(192,5553
+
+src/t_cose_standard_constants.h,1183
+#define __T_COSE_STANDARD_CONSTANTS_H__12,239
+#define COSE_HEADER_PARAM_ALG 53,1732
+#define COSE_HEADER_PARAM_CRIT 65,2036
+#define COSE_HEADER_PARAM_CONTENT_TYPE 76,2290
+#define COSE_HEADER_PARAM_KID 88,2594
+#define COSE_HEADER_PARAM_IV 101,2838
+#define COSE_HEADER_PARAM_PARTIAL_IV 114,3099
+#define COSE_HEADER_PARAM_COUNTER_SIGNATURE 125,3410
+#define COSE_ALGORITHM_RESERVED 148,3971
+#define COSE_ALGORITHM_ES256 164,4435
+#define COSE_ALGORITHM_ES384 177,4770
+#define COSE_ALGORITHM_ES512 190,5105
+#define COSE_ALGORITHM_SHA_256 200,5293
+#define COSE_ALGORITHM_SHA_384 209,5482
+#define COSE_ALGORITHM_SHA_512 218,5671
+#define COSE_KEY_COMMON_KTY 235,6026
+#define COSE_KEY_COMMON_KID 245,6247
+#define COSE_KEY_PARAM_CRV 265,6728
+#define COSE_KEY_PARAM_X_COORDINATE 278,7096
+#define COSE_KEY_PARAM_Y_COORDINATE 290,7429
+#define COSE_KEY_PARAM_PRIVATE_D 303,7795
+#define COSE_KEY_TYPE_OKP 322,8253
+#define COSE_KEY_TYPE_EC2 333,8545
+#define COSE_KEY_TYPE_SYMMETRIC 344,8804
+#define COSE_ELLIPTIC_CURVE_P_256 364,9265
+#define COSE_ELLIPTIC_CURVE_P_384 377,9593
+#define COSE_ELLIPTIC_CURVE_P_521 388,9867
+#define COSE_SIG_CONTEXT_STRING_SIGNATURE1 402,10125
+
+test/t_cose_make_test_pub_key.h,0
