@@ -1,7 +1,5 @@
 # 瑞士码报告
 
-[TOC]
-
 ## Quick View
 
 快速运行:
@@ -84,7 +82,6 @@ verify ok!
 ```
 
 获取的payload是一个jsoncons::ojson对象，你可以非常方便的使用这个json对象。
-
 需要注意的是，对于每一个qrcode，你都应该使用一个新的DecoderVerifier对象；而不要构造一个DV对象后，对对多个qrcode进行操作，当然，你可以修改里面的资源申请和释放操作，从而满足该方式。
 
 
@@ -100,13 +97,9 @@ verify ok!
 * [jsoncons](https://github.com/danielaparker/jsoncons)
 
 openssl使用的版本是openssl-1.1.1k
-
 为了支持PS256签名算法，对原来的t_cose开源库做了修改，请使用res目录下的t_cose库;
-
 你可以使用git diff，查看t_cose库的修改
-
 以上个别库的编译需要C++11的支持
-
 
 
 ## 瑞士码基本信息
@@ -155,8 +148,7 @@ Decoding a QR code into a COVID certificate uses the following steps. For more i
 以下两个示例
 
 * 瑞士疫苗码
-
-  ```
+```
 HC1:NCFR606G0/3WUWGSLKH47GO0Y%5S.PK%96L79CK3600XK0JCV496F37.JZK72F3QWR-L7Y50.FK6ZK7:EDOLOPCO8F6%E3.DA%EOPC1G72A6YM8LG7UL61Y8RL61Y8/A8SX8XW6U47J%69A60X6B56UPC0JCZ69FVCPD0LVC6JD846Y96C463W50S6+EDG8F3I80/D6$CBECSUER:C2$NS346$C2%E9VC- CSUE145GB8JA5B$D% D3IA4W5646946%96X47.JCP9EJY8L/5M/5546.96D463KC.SC4KCD3DX47B46IL6646H*6Z/E5JD%96IA74R6646407GVC*JC1A6X473W56L6WF6TPCBEC7ZKW.C58D14EOQEGEC3VCI3DI2D0/DZKEHECLPCG/D58DC1AZNARB82T8I3D9WENB8US8:X8HOAO/EZKEZ967L6256V50/K9PI4551S/PR+8XU3OUUR8QBMVIXROO0. 65WU/C1P9EGQ3YILMN9SAU%*IW%0Q-GNVFQUN*/6Q6KGRL9%Q6OV03QT+S9DKI6W.BL-.9-9PL:BN-Q75ER/FFI4E7N*PIY2IFO6T236%7C3W20ECAD44BC5R5:KPL7BN5+QL/TP/SN:BHYXARBUOAS2AM%FHV-R1NU%:6S2NCOHH7IALHN PM 56OOI61H+EM:D-:C8V3/ZUI7HVDVE+PE:J8SKU*UM3O5*PUBENOS1O4M+O- SZKE72WA%T:ZGCRI+20PXLCCFB82T%ORB03NFD5ON6Q4V552DOT0-E1343Z$CNJOP54E-KZQ7*4HNY7FTE 3A:BDJ09YW2LI9 0C6EQAD5*LVZ8S
   {
       "1": "CH", 
@@ -189,11 +181,9 @@ HC1:NCFR606G0/3WUWGSLKH47GO0Y%5S.PK%96L79CK3600XK0JCV496F37.JZK72F3QWR-L7Y50.FK6
           }
       }
   }
-  ```
-
+```
 * 瑞士Light码
-
-  ```
+```
   LT1:NCFP80M80T9WUWGSLKH47GO0W*TE:D.W8P/18CKULD*70YM8FN0EGCQBWWY0DGC..L597.FKMTKGVC*JC1A6X473W5$Q6PF6TPCBEC7ZKW.C 2D7WEZED5$C JC7/DAC8HWEM-D:1A*PDXKEW.C9WE2OA7Y8C+9VIAI3DDWENB8STA3+9C1A5N9VIAO/EZKEZ96446256V50PIHMFS09S+-5DVMWGT.TOFD6QCO*RLO58WYBY%RD2V050/.BCX4TEH-+FXYRM-UAPVEXBJOT4Y92T74SE2/G$TQC75Q/1FOFV8U/BI1Z5.ID:AWN:P56D+XAVR427DZ-R38EV7VERG$PRARFJ1N.$J +UZBJ+3A183MG78PTRVKWVEC-E$QNGUHY87HP80VD$NNCROM39X REHC33JF3PEQ6R$ECTTXW6/NK1*B6DH$6C7TFUWNVDQ%1U4A771BZKBIJKVXE35676799FVY0NF0Q$NRSBP0P/C9X1C.PMIAB7$SX/H:X64:8W 3WHO3HL96M8YS78ERIAHM4/I5*Z4 AS.:8:-0U.4+WMI7UJ8WGK5QQ4LDB--U -TNAK+C2B13TYL
   {
       "1": "CH", 
@@ -212,7 +202,7 @@ HC1:NCFR606G0/3WUWGSLKH47GO0Y%5S.PK%96L79CK3600XK0JCV496F37.JZK72F3QWR-L7Y50.FK6
           }
       }
   }
-  ```
+```
 
 注意Light码中只包含了最基本的信息，不包含健康信息
 
@@ -233,9 +223,7 @@ The verification process consists of three parts that need to be successful in o
 3. 第三步是使用national rules验证将二维码内的信息[
 
 其中公钥，废弃列表和national rules都可以通过api-token访问官方服务下载（见下一节）
-
 注意national rules使用的是[CertLogic](https://github.com/ehn-dcc-development/dgc-business-rules/blob/main/certlogic/specification/README.md)方式表示的，CertLogic是[jsonLogic](https://jsonlogic.com/)的一个子集，目前有Java，Kotlin，js等语言的解析引擎，没有找到C/C++的实现。
-
 [这个](https://github.com/panzi/jsonlogic-c)是jsonlogic的一个C实现(也实现了CertLogic)，但是作者表示，只是一个toy，不保证正确性和速度。
 
 
@@ -275,7 +263,6 @@ https://www.cc.bit.admin.ch/trust/v2/verificationRules
 ```
 
 可以使用Postman工具，向以上链接发送请求（需要api-token)，鉴权方式是Bearer
-
 或者使用[get_trustlist.py](./res/get_trustlist.py)脚本获取，注意你需要一个正式的api-token
 
 
