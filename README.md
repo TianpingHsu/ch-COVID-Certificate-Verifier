@@ -1,5 +1,15 @@
 # 瑞士码报告
 
+[QuickView](#QuickView)
+[API注解和用例](#API注解和用例)
+[三方库的使用和修改](#三方库的使用和修改)
+[瑞士码基本信息](#瑞士码基本信息)
+[解码](#解码)
+[校验](#校验)
+[TrustList下载](#TrustList下载)
+[需求相关信息](#需求相关信息)
+[参考](#参考)
+
 ## Quick View
 
 快速运行:
@@ -56,7 +66,7 @@ verify ok!
 由于接口已经封装，你可以如下使用：
 
 ```C++
-	for (const auto code : QRCODES) {
+for (const auto code : QRCODES) {
         DecoderVerifier dv;
         dv.decode (code , strlen(code));
 
@@ -82,7 +92,7 @@ verify ok!
 ```
 
 获取的payload是一个jsoncons::ojson对象，你可以非常方便的使用这个json对象。
-需要注意的是，对于每一个qrcode，你都应该使用一个新的DecoderVerifier对象；而不要构造一个DV对象后，对对多个qrcode进行操作，当然，你可以修改里面的资源申请和释放操作，从而满足该方式。
+需要注意的是，对于每一个qrcode，你都应该使用一个新的DecoderVerifier对象；而不要构造一个DV对象后，对多个qrcode进行操作，当然，你可以修改里面的资源申请和释放操作，从而满足该方式。
 
 
 
