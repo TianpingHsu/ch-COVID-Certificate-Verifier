@@ -277,12 +277,14 @@ https://www.cc.bit.admin.ch/trust/v2/verificationRules
 
 
 ## 参考
-
+* [rfc7049 CBOR](https://datatracker.ietf.org/doc/html/rfc7049)
+* [rfc8949 CBOR](https://cbor.io/)
 * [base45](https://github.com/ehn-dcc-development/base45-ansi-C.git)
 * [zlib](https://github.com/madler/zlib.git)
 * [t_cose](https://github.com/laurencelundblade/t_cose)
 * [qcbor](https://github.com/laurencelundblade/QCBOR)
-* [openssl[Link](https://ec.europa.eu/health/sites/health/files/ehealth/docs/digital-green-certificates_dt-specifications_en.pdf)](https://github.com/openssl/openssl)
+* [openssl](https://github.com/openssl/openssl)
+* [eu-dcc-specification](https://ec.europa.eu/health/sites/health/files/ehealth/docs/digital-green-certificates_dt-specifications_en.pdf)
 * [jsoncons](https://github.com/danielaparker/jsoncons)
 * [hcert-spec](https://github.com/ehn-dcc-development/hcert-spec)
 * [hcer-kotlin](https://github.com/ehn-dcc-development/hcert-kotlin)
