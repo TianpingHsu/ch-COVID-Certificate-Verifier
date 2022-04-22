@@ -22,17 +22,12 @@ int main() {
 
             jsoncons::ojson j;
             dv.getPayload(j);
-            //std::cout << jsoncons::pretty_print(j) << std::endl;
+            std::cout << jsoncons::pretty_print(j) << std::endl;
 
             std::string kid = dv.getKID();
             if (pubkeys.find(kid) != pubkeys.end()) {
                 if (dv.setPublicKey(pubkeys[kid])) {
-                    bool ret = dv.verify();
-                    if (ret) {
-                        printf("verify ok!\n");
-                    } else {
-                        printf("verify failed!\n");
-                    }
+                    printf("verify %s!\n", dv.verify() ? "ok" : "failed");
                 }
             } else {
                 printf("kid is not in pubkeys!\n");
